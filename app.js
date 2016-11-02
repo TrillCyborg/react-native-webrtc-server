@@ -21,8 +21,9 @@ var roomList = {};
 
 app.get('/', function(req, res){
   console.log('get /');
-  res.sendFile(__dirname + '/index.html');
+  res.send({ message: 'derp' });
 });
+
 server.listen(serverPort, function(){
   console.log('server up and running at %s port', serverPort);
   if (process.env.LOCAL) {
@@ -45,8 +46,7 @@ function socketIdsInRoom(name) {
 
 io.on('connection', function(socket){
   console.log('connection');
-  console.log('CLIENT CONNECTED', socket);
-  socket.emit('connect');
+
   socket.on('disconnect', function(){
     console.log('disconnect');
     if (socket.room) {
@@ -71,4 +71,6 @@ io.on('connection', function(socket){
     var to = io.sockets.connected[data.to];
     to.emit('exchange', data);
   });
+
+  socket.emit('connect');
 });
