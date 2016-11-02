@@ -46,6 +46,7 @@ function socketIdsInRoom(name) {
 io.on('connection', function(socket){
   console.log('connection');
   console.log('CLIENT CONNECTED', socket);
+  socket.emit('connect');
   socket.on('disconnect', function(){
     console.log('disconnect');
     if (socket.room) {
