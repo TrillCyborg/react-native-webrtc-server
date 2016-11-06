@@ -45,7 +45,7 @@ function socketIdsInRoom(name) {
 }
 
 io.on('connection', function(socket){
-  console.log('connection');
+  console.log('CONNECTION:', socket.id);
 
   socket.on('disconnect', function(){
     console.log('disconnect');
@@ -72,5 +72,5 @@ io.on('connection', function(socket){
     to.emit('exchange', data);
   });
 
-  socket.emit('connect');
+  // socket.emit('connect');
 });
