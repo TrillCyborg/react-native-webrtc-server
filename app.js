@@ -56,8 +56,8 @@ io.on('connection', function(socket){
     }
   });
 
-  socket.on('join', function(name, callback){
-    console.log('join', name);
+  socket.on('join battle', function(name, callback){
+    console.log('join battle', name);
     var socketIds = socketIdsInRoom(name);
     callback(socketIds);
     socket.join(name);
@@ -71,6 +71,4 @@ io.on('connection', function(socket){
     var to = io.sockets.connected[data.to];
     to.emit('exchange', data);
   });
-
-  // socket.emit('connect');
 });
