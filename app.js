@@ -21,7 +21,7 @@ var roomList = {};
 
 app.get('/', function(req, res){
   console.log('get /');
-  res.send({ message: 'derp' });
+  res.sendFile(__dirname + '/index.html');
 });
 
 server.listen(serverPort, function(){
